@@ -1,9 +1,9 @@
 board  = c(7, 7, 7, 7, 7, 7, 7, 0, 7, 7, 7, 7, 7, 7, 7, 0)
 print(board)
 
-house = 2
+house = sample(1:7, 1)
 print(house)
-shells = 15
+shells = board[house]
 drops = rep(F, 16)
 board[house] = 0
 
