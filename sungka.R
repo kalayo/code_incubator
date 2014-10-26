@@ -33,7 +33,7 @@ print(board)
 
 while (shellsr > 0) {
 while ((houser + 1) <= 16 & shellsr > 0) {
-	if ((houser + 1) == 8) houser = houser + 1 else houser = houser
+	if ((houser + 1) == 8) {houser = houser + 1}
 	dropsr[(houser+1)] = T						
 	houser = houser + 1
 	shellsr = shellsr - 1
@@ -113,3 +113,32 @@ board[housep] = 0
 board[houser] = 0
 }
 }
+
+#while (sum(c(pepe+pilar)) != 0) {
+	if (pepe) {
+		while (shellsp > 0) {						
+while ((housep+1) < 16 & shellsp > 0) {		
+	dropsp[(housep+1)] = T						
+	housep = housep + 1
+	shellsp = shellsp - 1
+	}
+stopp = housep
+board = board + dropsp
+dropsp = rep(F, 16)
+housep = 0
+}} else {
+	while ((houser + 1) <= 16 & shellsr > 0) {
+	if ((houser + 1) == 8) {houser = houser + 1}
+	dropsr[(houser+1)] = T						
+	houser = houser + 1
+	shellsr = shellsr - 1
+	}	
+stopr = houser
+board = board + dropsr
+dropsr = rep(F, 16)
+houser = 0
+}
+
+print(board)
+	
+#	}
