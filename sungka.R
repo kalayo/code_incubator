@@ -1,16 +1,13 @@
-
 board  = c( 7, 7, 7, 7, 7, 7, 7, 0,
 	     	7, 7, 7, 7, 7, 7, 7, 0)			# Initialize board.
 par(mfrow=c(2,2))
-plot(board, ylim = c(-1, 100), lty=1)
+plot(board, ylim = c(-1, 100), col='orange')
 
 pepe = T
 pilar = T
 
 housep = sample(1:7, 1)
 houser = sample(9:15, 1)
-#housep=2
-#houser=9						
 print(c(housep, houser))
 shellsp = board[housep]	
 shellsr = board[houser]
@@ -67,7 +64,7 @@ if (stopp == 8) {
 				board[8] = board[8] + board[(8-stopp)*2 + stopp] + 1
 				board[(8-stopp)*2 + stopp] = 0
 				board[stopp] = 0 
-				} else board[8] = board[8]
+				}
 			}
 		}
 if (stopr == 16) {
@@ -89,7 +86,7 @@ if (stopr == 16) {
 				board[16] = board[16] + board[stopr - (stopr-8)*2] + 1
 				board[stopr - (stopr-8)*2] = 0
 				board[stopr] = 0
-				}  else board[16] = board[16]
+				}
 			}
 		}
 print(paste(stopp, shellsp, housep, pepe))
