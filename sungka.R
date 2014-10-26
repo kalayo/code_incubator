@@ -46,11 +46,13 @@ houser = 0
 print(board)
 print(sum(board))
 if (stopp == 8) {
+	if (sum(board[1:7]) > 0) {
 	pepe = T
-	housep = sample((which(board[1:7]>0)), 1)
+	housep = sample((which(board[1:7] > 0)), 1)
 	shellsp = board[housep]
 	dropsp = rep(F, 16)
 	board[housep] = 0
+	} else pepe = F
 	} else {
 	if (board[stopp] > 1) {
 		pepe = T
@@ -68,11 +70,13 @@ if (stopp == 8) {
 			}
 		}
 if (stopr == 16) {
+	if (sum(board[9:15]) > 0) {
 	pilar = T
 	houser = sample((which(board[9:15]>0)), 1) + 8
 	shellsr = board[houser]
 	dropsr = rep(F, 16)
 	board[houser] = 0
+	} else pilar = F
 	} else {
 	if (board[stopr] > 1) {
 		pilar = T
