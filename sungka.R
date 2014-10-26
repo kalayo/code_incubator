@@ -1,7 +1,7 @@
 board  = c( 7, 7, 7, 7, 7, 7, 7, 0,
 	     	7, 7, 7, 7, 7, 7, 7, 0)			# Initialize board.
 par(mfrow=c(2,2))
-plot(board, ylim = c(-1, 100), col='orange')
+plot(board, ylim = c(-1, 100), pch = 15)
 
 pepe = T
 pilar = T
@@ -97,7 +97,7 @@ print(paste(stopp, shellsp, housep, pepe))
 print(paste(stopr, shellsr, houser, pilar))
 print(board)
 print(sum(board) + shellsr + shellsp)
-points(board)
+lines(board, col = 'orange')
 
 if (sum(c(pepe, pilar)) == 0) {
 pepe = T
