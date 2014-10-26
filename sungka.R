@@ -1,4 +1,3 @@
-test
 board  = c( 7, 7, 7, 7, 7, 7, 7, 0,
 	     	7, 7, 7, 7, 7, 7, 7, 0)			# Initialize board.
 par(mfrow=c(2,2))
@@ -61,7 +60,7 @@ if (stopp == 8) {
 		board[stopp] = 0
 		} else {
 			pepe = F
-			if (stopp < 8) {
+			if ((stopp < 8) & (board[(8-stopp)*2 + stopp] > 0)) {
 				board[8] = board[8] + board[(8-stopp)*2 + stopp] + 1
 				board[(8-stopp)*2 + stopp] = 0
 				board[stopp] = 0 
@@ -83,7 +82,7 @@ if (stopr == 16) {
 		board[stopr] = 0
 		} else {
 			pilar = F
-			if (stopr > 8) { 
+			if ((stopr > 8) & (board[stopr - (stopr-8)*2] > 0)) { 
 				board[16] = board[16] + board[stopr - (stopr-8)*2] + 1
 				board[stopr - (stopr-8)*2] = 0
 				board[stopr] = 0
