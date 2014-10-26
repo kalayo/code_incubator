@@ -1,3 +1,4 @@
+test
 board  = c( 7, 7, 7, 7, 7, 7, 7, 0,
 	     	7, 7, 7, 7, 7, 7, 7, 0)			# Initialize board.
 par(mfrow=c(2,2))
