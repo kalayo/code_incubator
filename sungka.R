@@ -1,14 +1,14 @@
 board  = c( 7, 7, 7, 7, 7, 7, 7, 0,
 	     	7, 7, 7, 7, 7, 7, 7, 0)			# Initialize board.
 par(mfrow=c(2,2))
-plot(board, ylim = c(-1, 100), pch = 15)
+plot(board, ylim = c(-1, 60), pch = 15)
 
 pepe = T
 pilar = T
 
 housep = sample(1:7, 1)
 houser = sample(9:15, 1)
-print(c(housep, houser))
+#print(c(housep, houser))
 shellsp = board[housep]	
 shellsr = board[houser]
 dropsp = rep(F, 16)
@@ -30,6 +30,7 @@ dropsp = rep(F, 16)
 housep = 0
 }
 print(board)
+#lines(board, col='cyan')
 
 while (shellsr > 0) {
 while ((houser + 1) <= 16 & shellsr > 0) {
@@ -44,7 +45,9 @@ dropsr = rep(F, 16)
 houser = 0
 }
 print(board)
-print(sum(board))
+#print(sum(board))
+#lines(board, col='pink')
+
 if (stopp == 8) {
 	if (sum(board[1:7]) > 0) {
 	pepe = T
@@ -93,10 +96,10 @@ if (stopr == 16) {
 				}
 			}
 		}
-print(paste(stopp, shellsp, housep, pepe))
-print(paste(stopr, shellsr, houser, pilar))
+#print(paste(stopp, shellsp, housep, pepe))
+#print(paste(stopr, shellsr, houser, pilar))
 print(board)
-print(sum(board) + shellsr + shellsp)
+#print(sum(board) + shellsr + shellsp)
 lines(board, col = 'orange')
 
 if (sum(c(pepe, pilar)) == 0) {
