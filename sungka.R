@@ -96,9 +96,10 @@ if (stopr == 16) {
 				}
 			}
 		}
-#print(paste(stopp, shellsp, housep, pepe))
-#print(paste(stopr, shellsr, houser, pilar))
-print(board)
+
+print(paste(stopp, shellsp, housep, pepe))
+print(paste(stopr, shellsr, houser, pilar))
+#print(board)
 #print(sum(board) + shellsr + shellsp)
 lines(board, col = 'orange')
 
@@ -116,7 +117,7 @@ board[housep] = 0
 board[houser] = 0
 }
 }
-
+ 
 while (pepe | pilar) {
 
 # pilar's turn
