@@ -114,90 +114,91 @@ board[houser] = 0
 }
 }
 
-#pilar's turn.
-# while (pilar) {
-# while (shellsr > 0) {
-# while ((houser + 1) <= 16 & shellsr > 0) {
-	# if ((houser + 1) == 8) houser = houser + 1 else houser = houser
-	# dropsr[(houser+1)] = T						
-	# houser = houser + 1
-	# shellsr = shellsr - 1
-	# }	
-# stopr = houser
-# board = board + dropsr
-# dropsr = rep(F, 16)
-# houser = 0
-# }
-# print(board)
-# if (stopr == 16) {
-	# if (sum(board[9:15]) > 0) {
-		# pilar = T
-		# houser = sample((which(board[9:15]>0)), 1) + 8
-		# shellsr = board[houser]
-		# dropsr = rep(F, 16)
-		# board[houser] = 0
-	# } else {
-		# if (sum(board[1:7]) > 0) {
-			# pilar = F
-			# pepe = T
-			# housep = sample((which(board[1:7] > 0)), 1)
-			# shellsp = board[housep]
-			# dropsp = rep(F, 16)
-			# board[housep] = 0
-		# } else {
-			# pilar = F
-			# pepe = F
-		# }
-	# }
-# } else {
-	# if (board[stopr] > 1) {
-		# pilar = T
-		# houser = stopr
-		# shellsr = board[stopr]
-		# dropsr = rep(F, 16)
-		# board[stopr] = 0
-	# } else {
-		# if (stopr < 8) {
-			# pilar = F
-			# pepe = T
-			# housep = sample((which(board[1:7] > 0)), 1)
-			# shellsp = board[housep]
-			# dropsp = rep(F, 16)
-			# board[housep] = 0
-		# } else {
-			# if ((sum(board[1:7])- board[stopr - (stopr-8)*2]) > 0) {
-				# if (board[stopr - (stopr-8)*2] == 0) {
-					# pilar = F
-					# pepe = T
-					# housep = sample((which(board[1:7] > 0)), 1)
-					# shellsp = board[housep]
-					# dropsp = rep(F, 16)
-					# board[housep] = 0
-				# } else {
-					# pilar = F
-					# board[16] = board[16] + board[stopr - (stopr-8)*2] + 1
-					# board[stopr - (stopr-8)*2] = 0
-					# board[stopr] = 0
-					# pepe = T
-					# housep = sample((which(board[1:7] > 0)), 1)
-					# shellsp = board[housep]
-						# dropsp = rep(F, 16)
-					# board[housep] = 0
-				# }
-			# } else {
-				# pilar = T
-				# houser = stopr
-				# shellsr = board[stopr]
-				# dropsr = rep(F, 16)
-				# board[stopr] = 0
-			# }
-		# }
-	# }
-# }
-# }
+while (pepe | pilar) {
+
+# pilar's turn
+if (pilar) {
+while (shellsr > 0) {
+while ((houser + 1) <= 16 & shellsr > 0) {
+	if ((houser + 1) == 8) houser = houser + 1 else houser = houser
+	dropsr[(houser+1)] = T						
+	houser = houser + 1
+	shellsr = shellsr - 1
+	}	
+stopr = houser
+board = board + dropsr
+dropsr = rep(F, 16)
+houser = 0
+}
+print(board)
+if (stopr == 16) {
+	if (sum(board[9:15]) > 0) {
+		pilar = T
+		houser = sample((which(board[9:15]>0)), 1) + 8
+		shellsr = board[houser]
+		dropsr = rep(F, 16)
+		board[houser] = 0
+	} else {
+		if (sum(board[1:7]) > 0) {
+			pilar = F
+			pepe = T
+			housep = sample((which(board[1:7] > 0)), 1)
+			shellsp = board[housep]
+			dropsp = rep(F, 16)
+			board[housep] = 0
+		} else {
+			pilar = F
+			pepe = F
+		}
+	}
+} else {
+	if (board[stopr] > 1) {
+		pilar = T
+		houser = stopr
+		shellsr = board[stopr]
+		dropsr = rep(F, 16)
+		board[stopr] = 0
+	} else {
+		if (stopr < 8) {
+			pilar = F
+			pepe = T
+			housep = sample((which(board[1:7] > 0)), 1)
+			shellsp = board[housep]
+			dropsp = rep(F, 16)
+			board[housep] = 0
+		} else {
+			if ((sum(board[1:7])- board[stopr - (stopr-8)*2]) > 0) {
+				if (board[stopr - (stopr-8)*2] == 0) {
+					pilar = F
+					pepe = T
+					housep = sample((which(board[1:7] > 0)), 1)
+					shellsp = board[housep]
+					dropsp = rep(F, 16)
+					board[housep] = 0
+				} else {
+					pilar = F
+					board[16] = board[16] + board[stopr - (stopr-8)*2] + 1
+					board[stopr - (stopr-8)*2] = 0
+					board[stopr] = 0
+					pepe = T
+					housep = sample((which(board[1:7] > 0)), 1)
+					shellsp = board[housep]
+						dropsp = rep(F, 16)
+					board[housep] = 0
+				}
+			} else {
+				pilar = T
+				houser = stopr
+				shellsr = board[stopr]
+				dropsr = rep(F, 16)
+				board[stopr] = 0
+			}
+		}
+	}
+}
+} else {
 
 # pepe's turn. also works.
-while (pepe) {
 while (shellsp > 0) {						
 while ((housep+1) < 16 & shellsp > 0) {		
 	dropsp[(housep+1)] = T						
@@ -274,5 +275,6 @@ if (stopp == 8) {
 			}
 		}
 	}
+}
 }
 }
