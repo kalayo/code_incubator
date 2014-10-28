@@ -1,7 +1,7 @@
 board  = c( 7, 7, 7, 7, 7, 7, 7, 0,
 	     	7, 7, 7, 7, 7, 7, 7, 0)			# Initialize board.
-#par(mfrow=c(2,2))
-#plot(board, ylim = c(-1, 60), pch = 15)
+par(mfrow=c(2,2))
+plot(board, ylim = c(-1, 60), pch = 15)
 
 dropsp = rep(F, 16)
 dropsr = rep(F, 16)
@@ -24,8 +24,8 @@ if (T) {
 print(paste(pepe, housep, shellsp, pilar, houser, shellsr))
 print(board)
 while (pepe | pilar) {
-#print(board)
-# pilar's turn
+
+
 if (pilar) {
 while (shellsr > 0) {
 while ((houser + 1) <= 16 & shellsr > 0) {
@@ -39,6 +39,7 @@ board = board + dropsr
 dropsr = rep(F, 16)
 houser = 0
 }
+lines(board, col = 'orange')
 #print(board)
 if (stopr == 16) {
 	if (sum(board[9:15]) > 0) {
@@ -123,6 +124,7 @@ board = board + dropsp
 dropsp = rep(F, 16)
 housep = 0
 }
+lines(board, col = 'gray')
 #print(board)
 if (stopp == 8) {
 	if (sum(board[1:7]) > 0) {
@@ -196,7 +198,4 @@ if (stopp == 8) {
 }
 }
 print(board)
-print(paste(pepe, housep, shellsp, pilar, houser, shellsr))
-#print(board)
-#readline()
 }
